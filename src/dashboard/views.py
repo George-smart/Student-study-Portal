@@ -141,7 +141,7 @@ def DashboardView(request):
         'homeworks_count': homework_count,
         'notes_count': notes_count
     }
-    return render(request, 'dashboard_home..html', context)
+    return render(request, 'dashboard_home.html', context)
 
 
 class DashboardCreateView(CreateView):
