@@ -15,192 +15,199 @@
     <link rel="stylesheet" href="{% static 'styles/style2.css' %}">
 </head>
 <body>
-    {% if user.profile.id %}
-    {% comment %} {{ cur_user }} {% endcomment %}
-        <section class="dashboard_container">
-                    <div class="hambuger">
-                        <div class="hambuger_container">
-                            <div class="line line_1"></div>
-                            <div class="line line_2"></div>
-                            <div class="line line_3"></div>
-                        </div>
-                    </div>
-                    <aside class="left_aside ">
-                        <h1>Dashboard</h1>
-                        <div class="aside_container">    
-                            <div class="side_colum">
-                                <a href="{% url 'dashboard' %}">
-                                    <div class="col col_1">
-                                        <img src="{% static 'images/dashboard.svg' %}">
-                                        <a href="{% url 'dashboard' %}">Dashboard</a>
-                                    </div>
-                                </a>
-                                <a href="{% url 'profile' user.profile.id %}">
-                                    <div class="col col_2">
-                                        <img src="{% static 'images/usernamelogo.svg' %}">
-                                        <a href="{% url 'profile' user.profile.id %}">Profile</a>
-                                    </div>
-                                </a>
-                                <a href="{% url 'assignment' %}">
-                                    <div class="col col_3">
-                                        <img src="{% static 'images/research.svg' %}">
-                                        <a href="{% url 'assignment' %}">Assignment</a>
-                                    </div>
-                                </a>
-                                <a href="{% url 'notes' %}">
-                                    <div class="col col_3">
-                                        <img src="{% static 'images/research.svg' %}">
-                                        <a href="{% url 'notes' %}">Notes</a>
-                                    </div>
-                                </a>
-                                <a href="{% url 'book' %}">
-                                    <div class="col col_4">
-                                        <img src="{% static 'images/research.svg' %}">
-                                        <a href="{% url 'book' %}">Books</a>
-                                    </div>
-                                </a>
-                                <a href="{% url 'wikipedia' %}">
-                                    <div class="col col_5">
-                                        <img src="{% static 'images/sharp.svg' %}">
-                                        <a href="{% url 'wikipedia' %}">Research</a>
-                                    </div>
-                                </a>  
-                                
+
+    {% if user.is_authenticated %}
+        {% if user.profile.id %}
+        {% comment %} {{ cur_user }} {% endcomment %}
+            <section class="dashboard_container">
+                        <div class="hambuger">
+                            <div class="hambuger_container">
+                                <div class="line line_1"></div>
+                                <div class="line line_2"></div>
+                                <div class="line line_3"></div>
                             </div>
                         </div>
-
-                        <div class="profile_box"> 
-                            <div class="active">
-                                    {% if user.profile.profile_pix %}   
-                                            <img src="{{ user.profile.profile_pix.url}}" style="width: 150px; height: 150px; border-radius: 50%;">
-                                    {% else %}
-                                        <img src="{% static 'images/profile.svg' %}" alt="Profile">
-                                    {% endif %}
-                                
+                        <aside class="left_aside ">
+                            <h1>Dashboard</h1>
+                            <div class="aside_container">    
+                                <div class="side_colum">
+                                    <a href="{% url 'dashboard' %}">
+                                        <div class="col col_1">
+                                            <img src="{% static 'images/dashboard.svg' %}">
+                                            <a href="{% url 'dashboard' %}">Dashboard</a>
+                                        </div>
+                                    </a>
+                                    <a href="{% url 'profile' user.profile.id %}">
+                                        <div class="col col_2">
+                                            <img src="{% static 'images/usernamelogo.svg' %}">
+                                            <a href="{% url 'profile' user.profile.id %}">Profile</a>
+                                        </div>
+                                    </a>
+                                    <a href="{% url 'assignment' %}">
+                                        <div class="col col_3">
+                                            <img src="{% static 'images/research.svg' %}">
+                                            <a href="{% url 'assignment' %}">Assignment</a>
+                                        </div>
+                                    </a>
+                                    <a href="{% url 'notes' %}">
+                                        <div class="col col_3">
+                                            <img src="{% static 'images/research.svg' %}">
+                                            <a href="{% url 'notes' %}">Notes</a>
+                                        </div>
+                                    </a>
+                                    <a href="{% url 'book' %}">
+                                        <div class="col col_4">
+                                            <img src="{% static 'images/research.svg' %}">
+                                            <a href="{% url 'book' %}">Books</a>
+                                        </div>
+                                    </a>
+                                    <a href="{% url 'wikipedia' %}">
+                                        <div class="col col_5">
+                                            <img src="{% static 'images/sharp.svg' %}">
+                                            <a href="{% url 'wikipedia' %}">Research</a>
+                                        </div>
+                                    </a>  
+                                    
+                                </div>
                             </div>
-                            {% if user.is_authenticated %}
-                            <small>{{ user.first_name}} {{ user.last_name }}</small>
-                            {% endif %}
-                            <a href="{% url 'logout' %}">Logout</a>
-                        </div>
-                    </aside>
 
-                    <section class="dashboard_main">
-                        <a href="{% url 'feedback' %}" class="btn" style="width:30%; font-size: .8rem;">Feedback</a>
-                        <div class="date_container">
-                            <p class="time">6 July, 2022 Wednesday</p>
-                        </div>
-
-                        <div class="top_col">
-                            <div class="top_col_text">
+                            <div class="profile_box"> 
+                                <div class="active">
+                                        {% if user.profile.profile_pix %}   
+                                                <img src="{{ user.profile.profile_pix.url}}" style="width: 150px; height: 150px; border-radius: 50%;">
+                                        {% else %}
+                                            <img src="{% static 'images/profile.svg' %}" alt="Profile">
+                                        {% endif %}
+                                    
+                                </div>
                                 {% if user.is_authenticated %}
-                                    <h2>Welcome {{ user.username}}</h2>
+                                <small>{{ user.first_name}} {{ user.last_name }}</small>
                                 {% endif %}
-                                    <p>This is just for learning purpose</p>
-                                    <p>Just trying to develop my skills. Thank for Using</p>
-                                    <p> Please click on the above button to leave us a feedback thanks</p>                            </div>
-                            <div class="top_col_img">
-                                <img src="{% static 'images/OBJECT 1.svg' %}" alt="Image">
+                                <a href="{% url 'logout' %}">Logout</a>
                             </div>
-                        </div>
+                        </aside>
 
-                        <div class="middle_col">
-                            <div class="dashboard_content row_1">
+                        <section class="dashboard_main">
+                            <a href="{% url 'feedback' %}" class="btn" style="width:30%; font-size: .8rem;">Feedback</a>
+                            <div class="date_container">
+                                <p class="time">6 July, 2022 Wednesday</p>
+                            </div>
+
+                            <div class="top_col">
+                                <div class="top_col_text">
+                                    {% if user.is_authenticated %}
+                                        <h2>Welcome {{ user.username}}</h2>
+                                    {% endif %}
+                                        <p>This is just for learning purpose</p>
+                                        <p>Just trying to develop my skills. Thank for Using</p>
+                                        <p> Please click on the above button to leave us a feedback thanks</p>                            </div>
+                                <div class="top_col_img">
+                                    <img src="{% static 'images/OBJECT 1.svg' %}" alt="Image">
+                                </div>
+                            </div>
+
+                            <div class="middle_col">
+                                <div class="dashboard_content row_1">
+                                    <header class="row_header">
+                                        <h4>Assignment</h4>
+                                        <a href="{% url 'assignment' %}" class="link">
+                                            <p>More <img src="{% static 'images/fi-rr-arrow-right22.svg' %}" alt=""></p>
+                                        </a>
+                                    </header>
+                                    
+                                    <div class="row_body">
+                                        {% if user.is_authenticated %}
+                                        {% if  homeworks_count %}
+                                                {% for homework in homeworks %}
+                                                    
+                                                    <a href="{% url 'assignment' %}">
+                                                        <div class="dash_con assign_1">
+                                                            <h5 class="assign_title">{{homework.title}}</h5>
+                                                            <p class="assign_body">{{homework.description|slice:"100"}}</p>
+                                                        </div>
+                                                    </a>
+                                            
+                                                {% endfor %}
+                                            {% else %}
+                                                <p>No Assignment Yet</p> 
+                                            {% endif %}
+                                        {% endif %}
+                                
+                                </div>
+                            </div>
+                            <div class="dashboard_content row_2">
                                 <header class="row_header">
-                                    <h4>Assignment</h4>
-                                    <a href="{% url 'assignment' %}" class="link">
+                                    <h4>Notes</h4>
+                                    <a href="{% url 'notes' %}" class="link">
                                         <p>More <img src="{% static 'images/fi-rr-arrow-right22.svg' %}" alt=""></p>
                                     </a>
                                 </header>
-                                
                                 <div class="row_body">
                                     {% if user.is_authenticated %}
-                                    {% if  homeworks_count %}
-                                            {% for homework in homeworks %}
-                                                
-                                                <a href="{% url 'assignment' %}">
+                                        {% if notes_count %}
+                                            {% for note in notes %}
+                                                <a href="{% url 'notes' %}">
                                                     <div class="dash_con assign_1">
-                                                        <h5 class="assign_title">{{homework.title}}</h5>
-                                                        <p class="assign_body">{{homework.description|slice:"100"}}</p>
+                                                        <h5 class="assign_title">{{note.title}}</h5>
+                                                        <p class="assign_body">{{ note.description|slice:"100"}}</p>
                                                     </div>
                                                 </a>
-                                        
                                             {% endfor %}
                                         {% else %}
-                                            <p>No Assignment Yet</p> 
+                                            <p>No Note Yet</p>
                                         {% endif %}
                                     {% endif %}
-                             
+                                
+                                </div>
                             </div>
-                        </div>
-                        <div class="dashboard_content row_2">
-                            <header class="row_header">
-                                <h4>Notes</h4>
-                                <a href="{% url 'notes' %}" class="link">
-                                    <p>More <img src="{% static 'images/fi-rr-arrow-right22.svg' %}" alt=""></p>
-                                </a>
-                            </header>
-                            <div class="row_body">
-                                {% if user.is_authenticated %}
-                                    {% if notes_count %}
-                                        {% for note in notes %}
-                                            <a href="{% url 'notes' %}">
-                                                <div class="dash_con assign_1">
-                                                    <h5 class="assign_title">{{note.title}}</h5>
-                                                    <p class="assign_body">{{ note.description|slice:"100"}}</p>
-                                                </div>
-                                            </a>
-                                        {% endfor %}
-                                    {% else %}
-                                        <p>No Note Yet</p>
-                                    {% endif %}
-                                {% endif %}
-                               
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <section class="bottom_col" style="display: flex; height: 100%; justify-content: flex-end; flex-direction: column;" >
-                        <div class="top_content">
-                            <p>Materials</p>
-                            <div class="read_more">
-                                <span>More</span>
-                                <img src="{% static 'images/fi-rr-arrow-right22.svg' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="material_content">
                             
-                            <a href="{% url 'book' %}" class="mat_link">
-                                <div class="youtube mat">
-                                    <div class="mat_logo">
-                                        <img class="mat_icon" src="{% static 'images/youtube.svg' %}" alt="">
-                                    </div>
-                                    <div class="mat_overview">
-                                        <h5 class="mat_title">Books</h5>
-                                        <p class="mat_text">Search For Books</p>
-                                    </div>
-                                    <img class="mat_image" src="{% static 'images/fi-rr-arrow-right22.svg' %}" alt="">
-                                </div>     
-                            </a>    
-                            <a href="{% url 'wikipedia' %}" class="mat_link">  
-                                <div class="wikipaedia mat">
+                        </div>
+                        <section class="bottom_col" style="display: flex; height: 100%; justify-content: flex-end; flex-direction: column;" >
+                            <div class="top_content">
+                                <p>Materials</p>
+                                <div class="read_more">
+                                    <span>More</span>
+                                    <img src="{% static 'images/fi-rr-arrow-right22.svg' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="material_content">
+                                
+                                <a href="{% url 'book' %}" class="mat_link">
+                                    <div class="youtube mat">
                                         <div class="mat_logo">
-                                            <span class="mat_icon">Wiki</span>
+                                            <img class="mat_icon" src="{% static 'images/youtube.svg' %}" alt="">
                                         </div>
                                         <div class="mat_overview">
-                                            <h5 class="mat_title">Wikipaedia</h5>
-                                            <p class="mat_text">Word Search</p>
+                                            <h5 class="mat_title">Books</h5>
+                                            <p class="mat_text">Search For Books</p>
                                         </div>
                                         <img class="mat_image" src="{% static 'images/fi-rr-arrow-right22.svg' %}" alt="">
-                                </div>
-                            </a>    
-                        </div>
+                                    </div>     
+                                </a>    
+                                <a href="{% url 'wikipedia' %}" class="mat_link">  
+                                    <div class="wikipaedia mat">
+                                            <div class="mat_logo">
+                                                <span class="mat_icon">Wiki</span>
+                                            </div>
+                                            <div class="mat_overview">
+                                                <h5 class="mat_title">Wikipaedia</h5>
+                                                <p class="mat_text">Word Search</p>
+                                            </div>
+                                            <img class="mat_image" src="{% static 'images/fi-rr-arrow-right22.svg' %}" alt="">
+                                    </div>
+                                </a>    
+                            </div>
+                        </section>
                     </section>
-                </section>
-        </section>
+            </section>
+            {% else %}
+                <h1 style="text-align:center; margin-top: 5rem; ">Please Create Your Profile to access this page </h1>
+                <a href="{% url 'create_profile' %}" class="btn">Create Your Profile</a>
+            {% endif %}
         {% else %}
-            <h1 style="text-align:center; margin-top: 5rem; ">Please Create Your Profile to access this page </h1>
-            <a href="{% url 'create_profile' %}" class="btn">Create Your Profile</a>
+            
+            <h1 style="text-align:center; margin-top: 5rem; ">Please Login to Access this page</h1>
+            <a href="{% url 'login' %}" class="btn">Login</a>
         {% endif %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
