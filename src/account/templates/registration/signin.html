@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Login
+{% endblock %}
+
+{% block hero %}
+
+    <h1>Welcome back </h1>
+    <p>Provide your Login detail to access the portal</p>
+{% endblock %}
+
+
+{% block content %}    
+    {% if user.is_authenticated %}
+    <h1 style="color: #fff;">Already a member please click on the <a style="color: purple" href="{% url 'dashboard' %}">dashboard</a> to access your portal </h1>
+    {% else %}
+        <div class="form_container">
+            <form action="" method="post" class="sign_form">
+                {% csrf_token %}
+                <h2 class="form_title">Welcome Back </h2>
+                <div class="profile_image">
+                    <img src="{% static 'images/profile.svg' %}" alt="Profile Image">
+                </div>
+                <p class="login_intro">Enter your username and password to login</p>
+
+                <p>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" placeholder="Username" required>
+                    <small class="input_icon"><img src="{% static 'images/usernamelogo.svg' %}"></small>
+                </p>
+                
+                <p>
+                    <label for="username">Password</label>
+                    <input type="password" name="password1" placeholder="Password" required>
+                    <small class="input_icon"><img src="{% static 'images/password.svg' %}" alt=""></small>
+                </p>
+                
+
+                <div class="remember_container">
+                    <div class="remember_btn">
+                        <div class="inner_btn"></div>
+                    </div>
+                    <span class="remember_text">Remember me</span>
+                </div>
+               
+
+                <button class="btn" type="submit">Sign In</button>
+                <div class="form-footer">
+                    <span>Don't have an account? </span> 
+                    <a href="{% url 'signup' %}">Sign In</a>
+                </div>
+            </form>
+        </div>
+
+    {% endif %}
+{% endblock %}

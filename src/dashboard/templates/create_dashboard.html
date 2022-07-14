@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Create Dashboard
+{% endblock %}
+
+{% block hero %}
+
+    <h1>Welcome {{ user.username}}</h1>
+    <p>Please Click the checkbox to go your dashboard</p>
+{% endblock %}
+
+
+{% block content %}    
+    {% if user.is_authenticated %}
+        {% if user.dashboard %}
+            <div class="forn_container">
+                <h2 class="form_title" style="color: #fff;">Dashboard Already created</h2>
+            </div>
+        {% else %}
+            <div class="form_container">
+                <form action="" method="post" class="sign_form" enctype="multipart/form-data">
+                   
+                    {% csrf_token %}
+                    <h2 class="form_title">Welcome Enter <span style="color: rgb(87, 2, 2);">DONE</span>  to proceed to dashboard </h2>
+                        
+                    {{ form.as_p }}
+
+                    <button class="btn" type="submit">Proceed to Dashboard</button>
+                </form>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="forn_container">
+            <h2 class="form_title" style="color: #fff;">Sign Up to Access This page</h2>
+        </div>
+    
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Sign Up
+{% endblock %}
+
+{% block hero %}
+    <h1>Welcome</h1>
+    <p>This is a new student Portal please register to get access to the login page</p>     
+{% endblock %}
+
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1 style="color: #fff;">Already a member please click on the <a style="color: purple" href="{% url 'dashboard' %}">dashboard</a> to access your portal </h1>
+    {% else %}
+        
+        <div class="form_container">
+            <form action="{% url 'signup' %}" method="post" class="sign_form">
+                {% csrf_token %}
+                <h2 class="form_title">Create Account</h2>
+
+                <div class="profile_image">
+                    <img src="{% static 'images/profile.svg' %}" alt="Profile Image">
+                </div>
+
+                {{ form.as_p }}
+
+
+                <button class="btn" type="submit">SignUp</button>
+                <div class="form-footer">
+                    <span>Already have an account? </span> 
+                    <a href="{% url 'login' %}">Sign In</a>
+                </div>
+            </form>
+            
+        </div>
+        
+    {% endif %}
+{% endblock %}

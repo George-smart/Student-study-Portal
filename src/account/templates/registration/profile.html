@@ -1,0 +1,79 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+    <main class="profile_container">
+        <div class="profile_page">
+            <div class="profile_page_image">
+                <div class="profile_image_con" style="border-width: .2rem;">
+                    <img src="{{ page_user.profile_pix.url}}" style="width: 150px; height: 150px; border-radius: 50%;">
+                </div>
+                <div class="profile_image_text">
+                    <p class="name">{{user.username}}</p>
+                    <p class="dept">{{ page_user.department}}</p>
+                </div>
+                <div class="profile_btn">
+                    <a href="{% url 'update_profile' page_user.pk %}" class="setting btn">Setting</a>     
+                </div>
+                
+            </div>
+
+            <div class="profile_detail">
+                <div class="about_detail">
+                <h1>About</h1>
+                <hr>
+                <div class="about_names">
+                        <p>Full Name</p>
+                        <p>{{ user.first_name}} {{ user.last_name}} </p>
+                </div> 
+                <div class="about_names">
+                        <p>Email</p>
+                        <p>{{ user.email}}</p>
+                </div> 
+                <div class="about_names">
+                        <p>Phone</p>
+                        <p>{{ page_user.phone }}</p>
+                </div> 
+                <div class="about_names">
+                        <p>Address</p>
+                        <p>{{ page_user.address}}</p>
+                </div> 
+                </div>
+                <hr>
+                <div class="school_detail">
+                    <h1>School Information</h1>
+                    
+                    <div class="school_info">
+                        <p>School</p>
+                        <p>{{ page_user.school}}</p>
+                    </div>
+                    <div class="school_info">
+                        <p>Faculty</p>
+                        <p>{{ page_user.faculty}}</p>
+                    
+                    </div>
+                    <div class="school_info">
+                        <p>Department</p>
+                        <p>{{ page_user.department}}</p>
+                    
+                    </div>
+                    <div class="school_info">
+                        <p>Level</p>
+                        <p>{{ page_user.level}}</p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+        <div class="forn_container">
+            <h2 class="form_title" style="color: #fff;">Sign Up to Access This page</h2>
+        </div>
+        {% endif %}
+    </main>
+{% endblock %}
