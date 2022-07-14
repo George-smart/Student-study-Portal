@@ -74,7 +74,7 @@
                             <div class="profile_box"> 
                                 <div class="active">
                                         {% if user.profile.profile_pix %}   
-                                                <img src="{{ user.profile.profile_pix.url}}" style="width: 150px; height: 150px; border-radius: 50%;">
+                                                <img src="{{ user.profile.profile_pix.url}}" style="width: 100px; height: 100px; border-radius: 50%;">
                                         {% else %}
                                             <img src="{% static 'images/profile.svg' %}" alt="Profile">
                                         {% endif %}
@@ -88,7 +88,7 @@
                         </aside>
 
                         <section class="dashboard_main">
-                            <a href="{% url 'feedback' %}" class="btn" style="width:30%; font-size: .8rem;">Feedback</a>
+                            <a href="{% url 'feedback' %}" class="btn" style="width:20%; font-size: .7rem; padding: .2rem;">Feedback</a>
                             <div class="date_container">
                                 <p class="time">6 July, 2022 Wednesday</p>
                             </div>

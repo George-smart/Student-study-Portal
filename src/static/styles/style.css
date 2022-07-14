@@ -980,16 +980,23 @@ FOOTER STYLING ENDS
         justify-content: flex-start;
     }
     .left_aside h1{
-      color: var(--primary-color-1);
+      color: var(--secondary-color-1);
     }
 
     .col:hover{
       background: var(--secondary-color-1);
       border-radius: .5rem;   
+
     }
 
-    .left_aside a{
-      color: var(--primary-color-1);
+    .left_aside .col a{
+      color: var(--secondary-color-1);
+      padding: .5rem;
+    }
+
+    .left_aside .col{
+      width: 100%;
+      padding: 0;
     }
     .active_colum{
         transform: translateX(0);

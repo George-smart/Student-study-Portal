@@ -10,9 +10,9 @@ import wikipedia
 
 def Wiki(request):
     if request.method == "POST":
-        text = request.POST.get('search')
         form = SearchForm(request.POST)
-        search = wikipedia.page( text)
+        text = request.POST.get('search')
+        search = wikipedia.page(text)
         context = {
             'form': form,
             'title': search.title,
