@@ -10,5 +10,5 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'zackp-study-portals.herokuapp.com',
+    'zackp-portal.herokuapp.com',
 ]
