@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    
+
     'dashboard.apps.DashboardConfig',
     'crispy_forms',
     'account.apps.AccountConfig',
@@ -65,6 +65,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'studentstudyportal.urls'
+
+WHITENOISE_AUTOREFRESH = True
 
 TEMPLATES = [
     {
