@@ -141,7 +141,7 @@ def DashboardView(request):
         'homeworks_count': homework_count,
         'notes_count': notes_count
     }
-    return render(request, 'dashboard.html', context)
+    return render(request, 'dashboard_home..html', context)
 
 
 class DashboardCreateView(CreateView):
@@ -197,19 +197,6 @@ class FeedbackView(CreateView):
 
     success_url = reverse_lazy('dashboard')
 
-
-# def FeedbackView(request):
-#     if request.method == 'POST':
-#         form = FeedbackForm()
-#         if form is not None:
-#             # Feedback.objects.create(subject='subject', description='description').save()
-#             messages.success(request, f"{request.user.username} Thanks for the response")
-#             redirect('dashboard')
-#         else:
-#             redirect('feedback')
-        
-#         return render(request, 'feedback.html', {'form': form})
-    
 
     
 
